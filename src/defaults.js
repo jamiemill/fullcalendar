@@ -27,11 +27,13 @@ var defaults = {
 	// time formats
 	titleFormat: {
 		month: 'MMMM yyyy',
+		fortnight: "MMM d[ yyyy]{ '&#8212;'[ MMM] d yyyy}",
 		week: "MMM d[ yyyy]{ '&#8212;'[ MMM] d yyyy}",
 		day: 'dddd, MMM d, yyyy'
 	},
 	columnFormat: {
 		month: 'ddd',
+		fortnight: 'ddd',
 		week: 'ddd M/d',
 		day: 'dddd M/d'
 	},
@@ -53,6 +55,7 @@ var defaults = {
 		nextYear: '&nbsp;&gt;&gt;&nbsp;',
 		today: 'today',
 		month: 'month',
+		fortnight: 'two weeks',
 		week: 'week',
 		day: 'day'
 	},
