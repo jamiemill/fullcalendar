@@ -21,6 +21,7 @@ function Calendar(element, options, eventSources) {
 	t.nextYear = nextYear;
 	t.today = today;
 	t.gotoDate = gotoDate;
+	t.gotoDateWithCallback = gotoDateWithCallback;
 	t.incrementDate = incrementDate;
 	t.formatDate = function(format, date) { return formatDate(format, date, options) };
 	t.formatDates = function(format, date1, date2) { return formatDates(format, date1, date2, options) };
@@ -186,7 +187,9 @@ function Calendar(element, options, eventSources) {
 	}
 	
 	
-	
+	/**
+	 * Second argument can be expected
+	 */
 	function renderView(inc) {
 		if (elementVisible()) {
 			ignoreWindowResize++; // because renderEvents might temporarily change the height before setSize is reached
@@ -229,7 +232,14 @@ function Calendar(element, options, eventSources) {
 			}
 			
 			ignoreWindowResize--;
+			
+			
 			currentView.trigger('viewDisplay', _element);
+			if (arguments.length == 2) {
+				console.log(arguments[1]);
+				arguments[1]();
+			}
+			alert('hi');
 		}
 	}
 	
@@ -415,6 +425,18 @@ function Calendar(element, options, eventSources) {
 			setYMD(date, year, month, dateOfMonth);
 		}
 		renderView();
+	}
+	
+	function gotoDateWithCallback(datetime) {
+		if (datetime instanceof Date) {
+			date = cloneDate(datetime); // datetime is a Date object
+		}
+		
+		if (arguments.length == 2) {
+			renderView(null, arguments[1]);
+		} else {
+			renderView();
+		}
 	}
 	
 	
