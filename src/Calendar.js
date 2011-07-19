@@ -424,8 +424,7 @@ function Calendar(element, options, eventSources) {
 		if (datetime instanceof Date) {
 			date = cloneDate(datetime); // datetime is a Date object
 		}
-		
-		// set firstHour here
+		options.firstHour = date.getHours();
 		
 		renderView();
 	}
