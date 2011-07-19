@@ -125,6 +125,10 @@
 	border-color: #ddd;
 	}
 	
+.fc-state-disabled {
+	cursor: default;
+	}
+	
 .fc-state-disabled .fc-button-effect {
 	display: none;
 	}
@@ -166,6 +170,7 @@ a.fc-event {
 	height: 100%;
 	border-style: solid;
 	border-width: 0;
+	overflow: hidden;
 	}
 	
 .fc-event-time,
