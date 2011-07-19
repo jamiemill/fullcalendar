@@ -21,6 +21,7 @@ function Calendar(element, options, eventSources) {
 	t.nextYear = nextYear;
 	t.today = today;
 	t.gotoDate = gotoDate;
+	t.gotoDateTime = gotoDateTime;
 	t.incrementDate = incrementDate;
 	t.formatDate = function(format, date) { return formatDate(format, date, options) };
 	t.formatDates = function(format, date1, date2) { return formatDates(format, date1, date2, options) };
@@ -186,7 +187,9 @@ function Calendar(element, options, eventSources) {
 	}
 	
 	
-	
+	/**
+	 * Second argument can be expected
+	 */
 	function renderView(inc) {
 		if (elementVisible()) {
 			ignoreWindowResize++; // because renderEvents might temporarily change the height before setSize is reached
@@ -414,6 +417,15 @@ function Calendar(element, options, eventSources) {
 		}else{
 			setYMD(date, year, month, dateOfMonth);
 		}
+		renderView();
+	}
+	
+	function gotoDateTime(datetime) {
+		if (datetime instanceof Date) {
+			date = cloneDate(datetime); // datetime is a Date object
+		}
+		options.firstHour = date.getHours();
+		
 		renderView();
 	}
 	
