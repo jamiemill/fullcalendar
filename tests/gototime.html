@@ -74,11 +74,7 @@
 		
 		$('a#gototime').click(function() {
 			var myDate = new Date('2011-01-01 01:00:00');
-			$('#calendar').fullCalendar('gotoDateWithCallback', myDate, function() {
-				//alert('I am from callback!');
-				var myHours = myDate.getHours();
-				$('#calendar .fc-agenda-divider').next().scrollTop(21 * 2 * myHours);
-			});
+			$('#calendar').fullCalendar('gotoDateTime', myDate);
 
 			return false;
 		});
