@@ -335,8 +335,8 @@ function AgendaView(element, calendar, viewName) {
 	
 		var headHeight = dayBody.position().top;
 		var allDayHeight = slotScroller.position().top; // including divider
-		var bodyHeight = Math.max( // total body height, including borders
-			height - headHeight,   // when scrollbars
+		var bodyHeight = Math.min( // total body height, including borders
+			height - headHeight + allDayHeight,   // when scrollbars
 			slotTable.height() + allDayHeight + 1 // when no scrollbars. +1 for bottom border
 		);
 		
